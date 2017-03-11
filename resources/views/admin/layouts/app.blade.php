@@ -19,6 +19,12 @@
             'csrfToken' => csrf_token(),
         ]) !!};
     </script>
+
+
+
+      <!-- Deleting massage -->
+
+
 </head>
 <body>
     <div id="app">

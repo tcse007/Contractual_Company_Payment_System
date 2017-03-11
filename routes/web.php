@@ -21,10 +21,21 @@ Route::group(['middleware' => 'auth'], function () {
 		$users=User::all();
 	    return view('admin.home',compact('users'));
 	});
+
+
 	Route::get('admin/contract_request', function () {
 		$contract_details=Contract_detail::all();
 	    return view('admin.contract_request',compact('contract_details'));
 	});
+
+	Route::get('admin/send_request/{id}', function ($id) {
+		$contract_detail=Contract_detail::find($id);
+		$users=User::all();
+	    return view('admin.send_request',compact('contract_detail','users'));
+	});
+	Route::post('admin/send_request/store/','AdminController@store');
+
+
 	Route::get('admin/user_request', function () {
 		$users=User::all();
 	    return view('admin.user_request',compact('users'));
@@ -35,12 +46,19 @@ Route::group(['middleware' => 'auth'], function () {
 
 
 
+
+ Contract_detail::find(1);
+
 });
 
 Route::get('/staff/home', function () {
-    return view('staff/home');
-});
+	$id=Auth::user()->id;
+	$users=User::find($id);
 
+	//$users = DB::table('contract_details')->where('staff_id','=',$id)->get();
+	//dd($users->contract_detail,$users->contract_detail->staff_id);
+    return view('staff/home',compact('users'));
+});
 
 //Client Route
 Route::get('/client/home', function () {

@@ -26,7 +26,7 @@
                                
                                 <td style="text-align:center">  
 
-                                    <a  href="<?=URL::to('admin/home/user_edit',array($contract_detail->id))?>"  class="btn btn-primary"><span class="glyphicon glyphicon-edit">Approve</a>
+                                    <a  href="<?=URL::to('admin/send_request',array($contract_detail->id))?>"  class="btn btn-primary"><span class="glyphicon glyphicon-edit">Send Request</a>
 
                                     <a  onclick="return check()" href="<?=URL::to('admin/home/user_delete',array($contract_detail->id))?>" class="btn btn-danger">
 
